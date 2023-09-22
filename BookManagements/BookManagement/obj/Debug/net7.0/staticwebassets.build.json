@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ebI/22tRPGU3MR7W5YV1O5uKLkbUqcMN+Of0GUOojeA=",
+  "Hash": "+J1HlolAWi8MausCSOBE+9AcjJNZY12tM/qYvUgyWiU=",
   "Source": "BookManagement",
   "BasePath": "_content/BookManagement",
   "Mode": "Default",
@@ -510,6 +510,40 @@
       "OriginalItemSpec": "wwwroot\\Images\\9.jpg"
     },
     {
+      "Identity": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\Images\\no-pic.jpg",
+      "SourceId": "BookManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\",
+      "BasePath": "_content/BookManagement",
+      "RelativePath": "Images/no-pic.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\no-pic.jpg"
+    },
+    {
+      "Identity": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\Images\\so5abpwo.jpg",
+      "SourceId": "BookManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\",
+      "BasePath": "_content/BookManagement",
+      "RelativePath": "Images/so5abpwo.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\so5abpwo.jpg"
+    },
+    {
       "Identity": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\Images\\wbu1gzyj.jpg",
       "SourceId": "BookManagement",
       "SourceType": "Discovered",
@@ -525,6 +559,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Images\\wbu1gzyj.jpg"
+    },
+    {
+      "Identity": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\Images\\yo334m1e.jpg",
+      "SourceId": "BookManagement",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\",
+      "BasePath": "_content/BookManagement",
+      "RelativePath": "Images/yo334m1e.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Images\\yo334m1e.jpg"
     },
     {
       "Identity": "D:\\PerkiRabbit\\BookManagement\\BookManagements\\BookManagement\\wwwroot\\Images\\zeypqpra.jpg",

@@ -8,7 +8,7 @@
 
 <div class="row">
     <div class="col-12">
-        <h3>Product List</h3>
+        <h3 class="fw-1 text-center">Book List</h3>
         <div class="d-flex justify-content-end mb-1">
             <a asp-controller="Books" asp-action="Create" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i> Add New</a>
         </div>
@@ -17,7 +17,8 @@
                 <tr class="text-center">
                     <th class="text-center"><i class="bi bi-chevron-bar-expand"></i></th>
                     <th>Images</th>
-                    <th>Product name</th>
+                    <th>Book name</th>
+                    <th>Book Type</th>
                     <th>Price</th>
                     <th></th>
                 </tr>
@@ -31,10 +32,11 @@
                             <button type="button" class="btn btn-light btn-sm hide-inventory" style="display:none"><i class="bi bi-chevron-down"></i></button>
                         </td>
                         <td class="text-center" style="padding:0; width:150px">
-                            <img src="~/Images/@b.Picture" class="rounded-circle" style="width:40px" />
+                            <img src="~/Images/@b.Picture" class="rounded img-fluid" style="width:40px" />
                         </td>
                         <td>@b.BookName</td>
-                        <td>@b.Price / @b.BookType</td>
+                        <td>@b.Price</td>
+                        <td>@b.BookType</td>
                         <td>
                             <a asp-action="Edit" asp-controller="Books" asp-route-id="@b.BookId" class="btn btn-success btn-sm">Edit</a>
                             <button type="button" data-pk="@b.BookId" class="btn btn-danger btn-sm del">Delete</button>
@@ -45,7 +47,7 @@
                         <td colspan="5" class="border-start-0">
 
                             <div class="mb-2">
-                                <span style="font-weight:700" class="me-2">Inventories</span>  <span class="badge bg-success">
+                                <span style="font-weight:700" class="me-2">Publisher</span><span class="badge bg-success">
                                     @b.Publishers.Sum(x=> x.TotalPublisher)
                                 </span>
                             </div>
