@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Book>
+@using X.PagedList
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-12">
+        <h3>Product List</h3>
+        <div class="d-flex justify-content-end mb-1">
+            <a asp-controller="Books" asp-action="Create" class="btn btn-primary btn-sm"><i class="bi bi-plus"></i> Add New</a>
+        </div>
+        <table class="table table-bordered table-responsive table-stripe">
+            <thead class="table-light">
+                <tr class="text-center">
+                    <th class="text-center"><i class="bi bi-chevron-bar-expand"></i></th>
+                    <th>Images</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var b in Model)
+                {
+                    <tr id="tr_@b.BookId">
+                        <td class="text-center" style="width:50px">
+                            <button type="button" class="btn btn-light btn-sm show-inventory"><i class="bi bi-chevron-right"></i></button>
+                            <button type="button" class="btn btn-light btn-sm hide-inventory" style="display:none"><i class="bi bi-chevron-down"></i></button>
+                        </td>
+                        <td class="text-center" style="padding:0; width:150px">
+                            <img src="~/Images/@b.Picture" class="rounded-circle" style="width:40px" />
+                        </td>
+                        <td>@b.BookName</td>
+                        <td>@b.Price / @b.BookType</td>
+                        <td>
+                            <a asp-action="Edit" asp-controller="Books" asp-route-id="@b.BookId" class="btn btn-success btn-sm">Edit</a>
+                            <button type="button" data-pk="@b.BookId" class="btn btn-danger btn-sm del">Delete</button>
+                        </td>
+                    </tr>
+                    <tr id="trr_@b.BookId" style="display:none">
+                        <td class="border-end-0"></td>
+                        <td colspan="5" class="border-start-0">
+
+                            <div class="mb-2">
+                                <span style="font-weight:700" class="me-2">Inventories</span>  <span class="badge bg-success">
+                                    @b.Publishers.Sum(x=> x.TotalPublisher)
+                                </span>
+                            </div>
+
+
+
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Publisher Name</th>
+                                        <th>Date</th>
+                                        <th>Total Publisher</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var publisher in b.Publishers)
+                                    {
+                                        <tr>
+                                            <td>@publisher.PublisherName</td>
+                                            <td>@($"{publisher.PublisherDate: yyyy-MM-dd}")</td>
+                                            <td>@publisher.TotalPublisher</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-end">
+            @Html.PagedListPager((IPagedList)Model, pg => Url.Action("Index", new { pg}), new PagedListRenderOptions
+            {
+            UlElementClasses = new string[] {"pagination", "pagination-sm"},
+            LiElementClasses = new string[] { "page-item" },
+            PageClasses = new string[] { "page-link" },
+            DisplayLinkToPreviousPage = PagedListDisplayMode.Always,
+            DisplayLinkToNextPage = PagedListDisplayMode.Always
+
+            })
+        </div>
+    </div>
+</div>
+
+@section styles
+    {
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+}
+@section Scripts
+    {
+
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script>
+        $(".show-inventory").click(function () {
+            $(this).closest("tr").next().toggle();
+            $(this).toggle();
+            $(this).next().toggle();
+        });
+        $(".hide-inventory").click(function () {
+            $(this).closest("tr").next().toggle();
+            $(this).toggle();
+            $(this).prev().toggle();
+        });
+        $(".del").click(function () {
+            let id = $(this).data('pk');
+            console.log(id);
+            if (confirm("Are you sure to Delete?")) {
+                $.ajax({
+                    type: "POST",
+                    url: "/Books/Delete/" + id,
+                    success: r => {
+                        $("#tr_" + id).remove();
+                        $("#trr_" + id).remove();
+                    }
+                })
+            }
+        })
+    </script>
+}

@@ -1,0 +1,76 @@
+﻿@model BookEditViewModel
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<div class="row">
+    <div class="col-12">
+        <form asp-action="Edit" asp-controller="Books" method="post" enctype="multipart/form-data">
+            <div class="form-group row mb-1">
+                <h3>Edit book</h3>
+                <input type="hidden" asp-for="BookId" />
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group row mb-1">
+                        <label asp-for="BookName" class="col-form-label col-form-label-sm col-2"></label>
+                        <div class="col-10">
+                            <input type="text" asp-for="BookName" class="form-control form-control-sm" />
+                            <span asp-validation-for="BookName" class="text-danger" style="font-size:small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label asp-for="Price" class="col-form-label col-form-label-sm col-2"></label>
+                        <div class="col-10">
+                            <input type="text" asp-for="Price" class="form-control form-control-sm" />
+                            <span asp-validation-for="Price" class="text-danger" style="font-size:small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label asp-for="BookType" class="col-form-label col-form-label-sm col-2"></label>
+                        <div class="col-5">
+                            <select asp-for="BookType" class="form-select form-select-sm" asp-items="@Html.GetEnumSelectList<BookType>()">
+                            </select>
+                            <span asp-validation-for="BookType" class="text-danger" style="font-size:small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+                        <label asp-for="Picture" class="col-form-label col-form-label-sm col-2"></label>
+                        <div class="col-10">
+                            <input type="file" asp-for="Picture" class="form-control form-control-sm" />
+                            <span asp-validation-for="Picture" class="text-danger" style="font-size:small"></span>
+                        </div>
+                    </div>
+                    <div class="form-group row mb-1">
+
+                        <div class="col-10 offset-2">
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </div>
+                    </div>
+                </div> <!-- col-8 -->
+                <div class="col-4">
+                    <img id="preview" class="img-thumbnail rounded-2" src="~/Images/@ViewBag.CurrentPic" style="width:140px" />
+                </div>
+            </div> <!--row-->
+
+        </form>
+    </div>
+</div>
+@section Scripts
+    {
+
+    <script src="~/libs/jquery/jquery.js"></script>
+    <script src="~/libs/validate/jquery.validate.js"></script>
+    <script src="~/libs/validate/jquery.validate.unobtrusive.js"></script>
+    <script>
+        $("#Picture").change(function (evt) {
+            //console.log(evt.target)
+            var file = evt.target.files[0];
+            $("#preview").attr("src", URL.createObjectURL(file));
+        });
+    </script>
+
+}
+
